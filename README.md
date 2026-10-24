@@ -40,8 +40,15 @@ Start all three containers
 ```
 pct start 130 && pct start 131 && pct start 132
 ```
-Create an Ansible project directory on slurm-head
+Step 1. Create an Ansible project directory on slurm-head.
 ```
 mkdir -p /root/ansible-slurm/files
 cd /root/ansible-slurm
+```
+Create the inventory file hosts.ini. You can easily add slurm-node3, slurm-node4, etc. there in the future.
+
+Step 2: Copy the authoritative munge.key and slurm.conf from your running head node into the Ansible staging directory.
+```
+cp /etc/munge/munge.key /root/ansible-slurm/files/munge.key
+cp /etc/slurm/slurm.conf /root/ansible-slurm/files/slurm.conf
 ```
