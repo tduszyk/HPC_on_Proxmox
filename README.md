@@ -47,8 +47,13 @@ cd /root/ansible-slurm
 ```
 Create the inventory file hosts.ini. You can easily add slurm-node3, slurm-node4, etc. there in the future.
 
-Step 2: Copy the authoritative munge.key and slurm.conf from your running head node into the Ansible staging directory.
+Step 2. Copy the authoritative munge.key and slurm.conf from your running head node into the Ansible staging directory.
 ```
 cp /etc/munge/munge.key /root/ansible-slurm/files/munge.key
 cp /etc/slurm/slurm.conf /root/ansible-slurm/files/slurm.conf
+```
+Step 3. Create /root/ansible-slurm/provision_worker.yml.
+Step 4. Install Ansible on slurm-head
+```
+apt install -y ansible
 ```
