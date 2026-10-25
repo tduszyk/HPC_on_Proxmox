@@ -53,6 +53,7 @@ cp /etc/munge/munge.key /root/ansible-slurm/files/munge.key
 cp /etc/slurm/slurm.conf /root/ansible-slurm/files/slurm.conf
 ```
 Step 3. Create /root/ansible-slurm/provision_worker.yml.
+
 Step 4. Install Ansible on slurm-head
 ```
 apt install -y ansible
