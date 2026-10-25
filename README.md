@@ -57,3 +57,23 @@ Step 4. Install Ansible on slurm-head
 ```
 apt install -y ansible
 ```
+Execute the playbook against all worker nodes
+```
+cd /root/ansible-slurm
+ansible-playbook -i hosts.ini provision_worker.yml
+```
+Step 5. Whenever you spin up an additional worker in the future (e.g. slurm-node3):
+Create the container on Proxmox (pct create 133 ...).
+
+Add its IP to hosts.ini.
+
+Add the line NodeName=slurm-node3 ... to /etc/slurm/slurm.conf and update files/slurm.conf.
+
+Run ansible-playbook -i hosts.ini provision_worker.yml.
+
+On slurm-head, reload the cluster state and resume the node:
+```
+scontrol reconfigure
+scontrol update NodeName=slurm-node3 State=RESUME
+sinfo
+```
